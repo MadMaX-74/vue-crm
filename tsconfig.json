@@ -29,11 +29,12 @@
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.js",
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-, "src/utils/message.plugin.js"  ],
+, "src/utils/message.plugin.ts", "src/store/auth.ts"  ],
   "exclude": [
     "node_modules"
   ]
