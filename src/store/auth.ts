@@ -6,11 +6,11 @@ export default {
             try {
                 await firebase.auth().signInWithEmailAndPassword(email, password)
             } catch (e) {
-                console.warn(e);                
+                commit('setError', e)                
                 throw e
             }
         },
-        async register({dispatch} : {dispatch:any}, {email, password, name} : {email:string; password:string; name:string}){
+        async register({dispatch, commit} : {dispatch:any; commit: any}, {email, password, name} : {email:string; password:string; name:string}){
             try {
                 await firebase.auth().createUserWithEmailAndPassword(email, password)
                 const uid = await dispatch('getUid')
@@ -19,7 +19,7 @@ export default {
                     name
                 })
             } catch (e) {
-                console.warn(e);                
+                commit('setError', e)               
                 throw e
             }
         },
@@ -31,4 +31,8 @@ export default {
             await firebase.auth().signOut()
         }
     }
+}
+
+function commit(arg0: string, e: unknown) {
+    throw new Error('Function not implemented.');
 }
