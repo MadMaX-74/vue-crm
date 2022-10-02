@@ -10,6 +10,7 @@ import 'materialize-css/dist/js/materialize.min'
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import 'firebase/compat/database';
 import 'firebase/compat/firestore';
 
 Vue.config.productionTip = false
@@ -22,6 +23,7 @@ Vue.filter('date', dateFilter)
 firebase.initializeApp({
   apiKey: "AIzaSyAv0U15IvZQIF2y74Jg8R6eav0zz0K3qdA",
   authDomain: "vue-use-crm.firebaseapp.com",
+  databaseURL: "https://vue-use-crm-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "vue-use-crm",
   storageBucket: "vue-use-crm.appspot.com",
   messagingSenderId: "541779271956",
