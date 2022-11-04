@@ -15,10 +15,10 @@
               </thead>
 
               <tbody>
-              <tr>
-                <td>руб</td>
-                <td>12121</td>
-                <td>12.12.12</td>
+              <tr v-for="cur in currencies" :key="cur">
+                <td>{{cur}}</td>
+                <td>{{rates[cur].toFixed(3 )}}</td>
+                <td>{{date | date('date')}}</td>
               </tr>
               </tbody>
             </table>
@@ -31,6 +31,17 @@
     import Vue from 'vue'
 
     export default Vue.extend({
+        props: {
+            rates: {
+                type: Object
+            },
+            date: {
+                type: String
+            }
+        },
+        data: () => ({
+            currencies: ['RUB', 'USD', 'EUR']
+        })
         
     })
 </script>
