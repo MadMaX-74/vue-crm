@@ -60,7 +60,7 @@
     }
   },
   methods: {
-    async logout() :void{
+    async logout() :Promise<void>{
       await this.$store.dispatch('logout')
       this.$router.push('/login?message=logout')
     }
