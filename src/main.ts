@@ -6,6 +6,8 @@ import router from './router'
 import store from './store'
 import dateFilter from './filters/date.filters'
 import currencyFilter from '@/filters/currency.filter'
+// @ts-ignore
+import tooltipDirective from "@/directives/tooltip.directive.js";
 import messagePlugin from './utils/message.plugin'
 import 'materialize-css/dist/js/materialize.min'
 import Loader from '@/components/app/Loader.vue'
@@ -20,6 +22,7 @@ Vue.use(messagePlugin)
 Vue.use(Vuelidate)
 Vue.filter('date', dateFilter)
 Vue.filter('currency', currencyFilter)
+Vue.directive('tooltip', tooltipDirective)
 Vue.component('Loader', Loader)
 
 
@@ -42,6 +45,6 @@ firebase.auth().onAuthStateChanged(() => {
       store,
       render: h => h(App)
     }).$mount('#app')
-  }  
+  }
 })
 
