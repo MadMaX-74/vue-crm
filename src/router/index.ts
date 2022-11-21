@@ -28,7 +28,7 @@ const routes: Array<RouteConfig> = [
     component: () => import('../views/Categories.vue')
   },
   {
-    path: '/deatil',
+    path: '/detail/:id',
     // eslint-disable-next-line
     name: 'detail',
     meta: {layout: 'main', auth: true},
