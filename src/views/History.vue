@@ -30,7 +30,7 @@
 <script lang="ts">
 import Vue from "vue";
 import HistoryTable from "@/components/HistoryTable.vue";
-import paginationMixin from "@/mixins/pagination.mixin";
+import paginationMixin from "@/mixins/pagination.mixin.js";
 
 export default Vue.extend({
   name: 'history',

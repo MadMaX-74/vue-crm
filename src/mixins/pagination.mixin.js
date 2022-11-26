@@ -1,7 +1,6 @@
-import Vue from "vue";
 import _ from 'lodash';
 
-export default Vue.extend({
+export default {
     data () {
         return {
             page: +this.$route.query.page || 1,
@@ -12,14 +11,14 @@ export default Vue.extend({
         }
     },
     methods: {
-        setupPagination (allItems :Array<any>) :void{
+        pageChangeHandler(page) {
+            this.$router.push(`${this.$route.path}?page=${page}`)
+            this.items = this.allItems[page-1] || this.allItems[0]
+        },
+        setupPagination (allItems) {
             this.allItems = _.chunk(allItems,  this.pageSize)
             this.pageCount = _.size(this.allItems)
             this.items = this.allItems[this.page - 1] || this.allItems[0]
-        },
-        pageChangeHandler(page :number) :void {
-            this.$router .push(`${this.$route.path}?page=${page}`)
-            this.items = this.allItems[page - 1] || this.allItems[0 ]
         }
     }
-})
+}
