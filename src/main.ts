@@ -7,14 +7,16 @@ import store from './store'
 import dateFilter from './filters/date.filters'
 import currencyFilter from '@/filters/currency.filter'
 // @ts-ignore
-import tooltipDirective from "@/directives/tooltip.directive.js";
+import tooltipDirective from "@/directives/tooltip.directive.js"
 import messagePlugin from './utils/message.plugin'
 import 'materialize-css/dist/js/materialize.min'
 import Loader from '@/components/app/Loader.vue'
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/database';
-import 'firebase/compat/firestore';
+import firebase from 'firebase/compat/app'
+// @ts-ignore
+import Paginate from 'vuejs-paginate'
+import 'firebase/compat/auth'
+import 'firebase/compat/database'
+import 'firebase/compat/firestore'
 
 Vue.config.productionTip = false
 
@@ -24,6 +26,7 @@ Vue.filter('date', dateFilter)
 Vue.filter('currency', currencyFilter)
 Vue.directive('tooltip', tooltipDirective)
 Vue.component('Loader', Loader)
+Vue.component('Paginate', Paginate)
 
 
 firebase.initializeApp({
