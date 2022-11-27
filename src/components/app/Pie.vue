@@ -60,7 +60,7 @@ export default {
       type: Array,
       default: () => []
     },
-    lable: {
+    pieLable: {
       type: Array
     },
     pieData: {
@@ -70,7 +70,7 @@ export default {
   data() {
     return {
       chartData: {
-        labels: this.lable,
+        labels: this.pieLable,
         datasets: [
           {
             backgroundColor: ['#41B883'],

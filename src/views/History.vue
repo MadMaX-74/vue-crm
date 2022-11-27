@@ -5,7 +5,7 @@
     </div>
 
     <div class="history-chart">
-      <PieChart :lable="categories" :pieData="categoriesData"/>
+      <PieChart :pieLable="categories" :pieData="categoriesData"/>
     </div>
 
     <Loader v-if="loading"/>
