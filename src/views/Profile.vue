@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters, mapActions} from "vuex";
 import {required} from "vuelidate/lib/validators";
 
 export default {
@@ -57,14 +57,16 @@ export default {
     ...mapGetters(['info'])
   },
   methods: {
+    ...mapActions(['updateInfo']),
     async submitHandler()  {
       if (this.$v.$invalid){
         this.$v.$touch()
         return
       }
-
       try{
-
+        await this.updateInfo({
+          name: this.name
+        })
       }catch(e){
         console.warn(e.message)
       }
