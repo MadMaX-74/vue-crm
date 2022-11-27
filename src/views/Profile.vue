@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Профиль</h3>
+      <h3>{{ 'ProfileTitle' | localize }}</h3>
     </div>
 
     <form class="form" @submit.prevent="submitHandler">
@@ -12,22 +12,22 @@
             v-model="name"
             :class="{invalid: $v.name.$dirty && !$v.name.required}"
         >
-        <label for="description">Имя</label>
-        <small class="helper-text invalid" v-if="$v.name.$dirty && !$v.name.required">Введите имя</small>
+        <label for="description">{{ 'Name' | localize }}</label>
+        <small class="helper-text invalid" v-if="$v.name.$dirty && !$v.name.required">{{ 'InputName' | localize }}</small>
       </div>
 
       <!-- Switch -->
       <div class="switch">
         <label>
           English
-          <input type="checkbox">
+          <input type="checkbox" v-model="isRuLocale">
           <span class="lever"></span>
           Русский
         </label>
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        Обновить
+        {{ 'Update' | localize }}
         <i class="material-icons right">send</i>
       </button>
     </form>
@@ -40,13 +40,15 @@ import {required} from "vuelidate/lib/validators";
 
 export default {
   data: () => ({
-    name: ''
+    name: '',
+    isRuLocale: true
   }),
   validations: {
     name: {required}
   },
   mounted() {
     this.name = this.info.name
+    this.isRuLocale = this.info.locale === 'ru-RU'
     // eslint-disable-next-line no-undef
     setTimeout(() => {
       M.updateTextFields()
@@ -65,7 +67,8 @@ export default {
       }
       try{
         await this.updateInfo({
-          name: this.name
+          name: this.name,
+          locale: this.isRuLocale ? 'ru-RU' : 'en-US'
         })
       }catch(e){
         console.warn(e.message)
