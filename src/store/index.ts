@@ -4,6 +4,7 @@ import auth from './auth'
 import info from './info'
 import category from './category'
 import record from './record'
+import * as Process from "process";
 
 Vue.use(Vuex)
 
