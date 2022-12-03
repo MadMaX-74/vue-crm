@@ -23,6 +23,11 @@ import Loader from '@/components/app/Loader.vue';
 
 export default Vue.extend({
   name: 'categories',
+  metaInfo () {
+    return {
+      title: this.$title('Categories')
+    }
+  },
   components: {CategoryCreate, CategoryEdit, Loader},
   data: () => ({
     categories: [],

@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
-      <span class="card-title">{{'Home_Bookkeeping' | localize}}</span>
+      <span class="card-title">{{'LogIn' | localize}}</span>
       <div class="input-field">
         <input
             id="email"
@@ -22,7 +22,7 @@
         >
         <label for="password">Пароль</label>
         <small class="helper-text invalid" v-if="$v.password.$dirty && !$v.password.required">{{ 'Input_Password' | localize }}</small>
-        <small class="helper-text invalid" v-else-if="$v.password.$dirty && !$v.password.minLength">{{`Min length ${$v.password.$params.minLength.min} symbols`}}</small>
+        <small class="helper-text invalid" v-else-if="$v.password.$dirty && !$v.password.minLength">Min length ${$v.password.$params.minLength.min} symbols</small>
       </div>
     </div>
     <div class="card-action">
@@ -45,11 +45,17 @@
 </template>
 
 <script lang="ts">
-import {email, required, minLength} from 'vuelidate/lib/validators'
-import messages from '@/utils/messages'
+import Vue from 'vue'
+import {email, required, minLength} from 'vuelidate/lib/validators';
+import messages from '@/utils/messages';
 
-  export default {
+  export default  Vue.extend({
     name: 'login',
+    metaInfo () {
+      return {
+        title: this.$title('LogIn')
+      }
+    },
     data: () => ({
       email: '',
       password: ''
@@ -82,7 +88,7 @@ import messages from '@/utils/messages'
 
       }
     }
-  }
+  })
 </script>
 
 

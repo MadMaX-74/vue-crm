@@ -35,6 +35,11 @@ import currencyFilter from "@/filters/currency.filter";
 
 export default Vue.extend({
   name: 'planning',
+  metaInfo () {
+    return {
+      title: this.$title('Menu_Planning')
+    }
+  },
   data: () => ({
     loading: true,
     categories: []

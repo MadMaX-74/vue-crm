@@ -83,6 +83,11 @@ import {mapGetters} from "vuex";
 
 export default Vue.extend({
   name: 'record',
+  metaInfo () {
+    return {
+      title: this.$title('Menu_New_Record')
+    }
+  },
   validations: {
     description: {required},
     amount: {minValue: minValue(1)}

@@ -10,7 +10,7 @@
 
     <Loader v-if="loading"/>
 
-    <p class="center" v-else-if="!records.length">{{ 'No_Entries' | localize }} <router-link to="/record">{{ 'Add_record' | localize }}</router-link></p>
+    <p class="center" v-else-if="!records.length">{{ 'No_Entries' | localize }} <router-link to="/record">{{ 'Add_Record' | localize }}</router-link></p>
 
     <section>
       <HistoryTable :records="items"/>
@@ -19,8 +19,8 @@
           v-model="page"
           :page-count="pageCount"
           :click-handler="pageChangeHandler"
-          :prev-text="'Назад'"
-          :next-text="'Вперед'"
+          :prev-text="'Back'"
+          :next-text="'Forward'"
           :container-class="'pagination'"
           :page-class="'waves-effect'"/>
     </section>
@@ -35,6 +35,11 @@ import PieChart from "@/components/app/Pie.vue";
 
 export default Vue.extend({
   name: 'history',
+  metaInfo() {
+    return {
+      title: this.$title('Menu_History')
+    }
+  },
   mixins: [paginationMixin],
   components: {PieChart, HistoryTable},
   data: () => ({

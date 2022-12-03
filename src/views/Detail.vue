@@ -34,6 +34,11 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: 'detail',
+  metaInfo () {
+    return {
+      title: this.$title('Record')
+    }
+  },
   data: () => ({
     loading: true,
     record: null

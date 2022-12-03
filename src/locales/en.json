@@ -42,6 +42,7 @@
   "Type": "Type",
   "Open": "Open",
   "Exchange_Rates": "Exchange Rates",
-  "Currency" : "Валюта",
-  "Exchange": "Курс"
+  "Currency" : "Currency",
+  "Exchange": "Exchange",
+  "Detail": "Detail"
 }

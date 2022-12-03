@@ -37,7 +37,7 @@
       <p>
         <label>
           <input type="checkbox" v-model="agree" />
-          <span>{{ 'riles_agree' | localize }}</span>
+          <span>{{ 'rules_agree' | localize }}</span>
         </label>
       </p>
     </div>
@@ -61,8 +61,14 @@
 </template>
 
 <script lang="ts">
-  import {email, required, minLength} from 'vuelidate/lib/validators'
- export default {
+  import {email, required, minLength} from 'vuelidate/lib/validators';
+
+  export default {
+   metaInfo () {
+     return {
+       title: this.$title('Home_Bookkeeping')
+     }
+   },
   data: () => ({
       email: '',
       password: '',
