@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>История записей</h3>
+      <h3>{{ 'Records_History' | localize }}</h3>
     </div>
 
     <div class="history-chart">
@@ -10,7 +10,7 @@
 
     <Loader v-if="loading"/>
 
-    <p class="center" v-else-if="!records.length">Записей пока нет <router-link to="/record">Добавьте запись</router-link></p>
+    <p class="center" v-else-if="!records.length">{{ 'No_Entries' | localize }} <router-link to="/record">{{ 'Add_record' | localize }}</router-link></p>
 
     <section>
       <HistoryTable :records="items"/>

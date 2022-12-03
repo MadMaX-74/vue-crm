@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Счет</h3>
+      <h3>{{ 'Menu_Bill' | localize }}</h3>
 
       <button class="btn waves-effect waves-light btn-small" @click="refresh()">
         <i class="material-icons">refresh</i>
@@ -10,7 +10,7 @@
 
     <Loader v-if="loading" />
     <div class="row" v-else>
-      <HomeBill 
+      <HomeBill
       :rates="currency.rates"
       />
 
@@ -43,7 +43,7 @@ export default {
       this.currency = await this.$store.dispatch('fetchCurrency')
       this.loading = false
     }
-    
+
   },
 }
 </script>

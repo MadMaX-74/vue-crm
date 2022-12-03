@@ -2,25 +2,25 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Категории</h3>
+      <h3>{{ 'Categories' | localize }}</h3>
     </div>
     <section>
       <Loader v-if="loading" />
       <div class="row" v-else>
         <CategoryCreate @created="addNewCategory" />
         <CategoryEdit v-if="categories.length" :categories="categories" @updated="updateCategories" :key="categories.length + updateCount" />
-        <p v-else class="center">Категорий нет</p>
+        <p v-else class="center">{{"no_categories" | localize }}</p>
       </div>
     </section>
   </div>
 </template>
 
-<script lang="ts"> 
+<script lang="ts">
 import Vue from 'vue';
 import CategoryCreate from '@/components/CategoryCreate.vue';
 import CategoryEdit from '@/components/CategoryEdit.vue';
 import Loader from '@/components/app/Loader.vue';
-  
+
 export default Vue.extend({
   name: 'categories',
   components: {CategoryCreate, CategoryEdit, Loader},
