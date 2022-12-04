@@ -5,7 +5,7 @@
     </div>
 
     <div class="history-chart">
-      <PieChart :pieLable="categories" :pieData="categoriesData" :key="categories.length"/>
+      <PieChart :pieLable="categoriesLabel" :pieData="categoriesData" :key="categoriesLabel.length"/>
     </div>
 
     <Loader v-if="loading"/>
@@ -27,13 +27,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
+<script>
 import HistoryTable from "@/components/HistoryTable.vue";
 import paginationMixin from "@/mixins/pagination.mixin.js";
 import PieChart from "@/components/app/Pie.vue";
 
-export default Vue.extend({
+export default{
   name: 'history',
   metaInfo() {
     return {
@@ -45,36 +44,42 @@ export default Vue.extend({
   data: () => ({
     loading: true,
     records : [],
-    categories: [],
+    categoriesLabel: [],
     categoriesData: []
   }),
   async mounted () {
-    this.records = await this.$store.dispatch('fetchRecords')
-    const categories = await this.$store.dispatch('fetchCategory')
-    this.setup(categories)
-    this.categories = categories.map(c => c.title)
-    this.categoriesData = categories.map(c => {
-      return this.records.reduce((total, r) => {
-        if (r.categoryId === c.id && r.type === 'outcome'){
-          total += +r.amount
-        }
-        return total
-      }, 0)
-    })
+    try {
+      this.records = await this.$store.dispatch('fetchRecords')
+      const categories = await this.$store.dispatch('fetchCategory')
+      this.setup(categories)
 
-    this.loading = false
+      this.categoriesLabel = categories.map(c => c.title)
+      this.categoriesData = categories.map(c => {
+        return this.records.reduce((total, r) => {
+          if (r.categoryId === c.id && r.type === 'outcome'){
+            total += +r.amount
+          }
+          return total
+        }, 0)
+      })
+      this.loading = false
+
+    } catch (e) {
+      this.loading = false
+      console.warn(e.message)
+    }
   },
   methods: {
-    setup (categories) {
+    setup (data) {
       this.setupPagination(this.records.map(record => {
         return {
           ...record,
-          categoryName: categories.find(c => c.id === record.categoryId).title,
+          categoryName: data.find(c => c.id === record.categoryId).title,
           typeClass: record.type === 'income' ? 'green' : 'red',
           typeText: record.type === 'income' ? 'Доход' : 'Расход'
         }
       }))
     }
   }
-})
+}
 </script>

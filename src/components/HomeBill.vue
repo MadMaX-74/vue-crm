@@ -15,10 +15,9 @@
       </div>
 </template>
 
-<script lang="ts">
-    import Vue from 'vue'
+<script>
 
-    export default Vue.extend({
+    export default {
         props: {
             rates: {
                 type: Object
@@ -28,16 +27,16 @@
             currencies: ['RUB', 'USD', 'EUR']
         }),
         computed: {
-            base() :number{
+            base(){
                 return this.$store.getters.info.bill / (this.rates['RUB'] / this.rates['USD'])
             }
         },
         methods: {
-            getCurrency(currency :string) :number {
+            getCurrency(currency) {
                 return Math.floor(this.base * this.rates[currency])
             }
         }
-    })
+    }
 </script>
 
 <style scoped>

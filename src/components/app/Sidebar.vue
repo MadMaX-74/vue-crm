@@ -6,7 +6,7 @@
   </ul>
 </template>
 
-<script lang="ts">
+<script>
 import localizeFilter from "@/filters/localize.filter";
    export default {
     props: ['value'],

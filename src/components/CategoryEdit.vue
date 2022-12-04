@@ -34,12 +34,10 @@
     </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
 import {required, minValue} from 'vuelidate/lib/validators'
 
-
-export default Vue.extend({
+export default{
     validations: {
         title: {required},
         limit: {minValue: minValue(100)}
@@ -57,7 +55,9 @@ export default Vue.extend({
         current: null
     }),
     mounted() {
+      // eslint-disable-next-line no-undef
         M.updateTextFields();
+      // eslint-disable-next-line no-undef
         this.select = M.FormSelect.init(this.$refs.select)
     },
     destroyed() {
@@ -66,7 +66,7 @@ export default Vue.extend({
         }
     },
     watch: {
-        current(categID :string) {
+        current(categID) {
            const {title, limit} = this.categories.find(c => c.id === categID)
            this.title = title
            this.limit = limit
@@ -91,7 +91,7 @@ export default Vue.extend({
                     limit: this.limit
                 }
                 await this.$store.dispatch('updateCategory', categoryData)
-                this.$message('категория успешно обновлена')
+                this.$message('Category create success ')
                 this.$emit('updated', categoryData)
             } catch(e) {
                 console.warn(e);
@@ -100,7 +100,7 @@ export default Vue.extend({
         }
     }
 
-})
+}
 </script>
 
 <style scoped>

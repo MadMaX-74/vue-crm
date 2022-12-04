@@ -30,10 +30,9 @@
   </table>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
+<script>
 
-export default Vue.extend({
+export default{
   name: "HistoryTable",
   props: {
     records: {
@@ -41,7 +40,7 @@ export default Vue.extend({
       required: true
     }
   }
-})
+}
 </script>
 
 <style scoped>

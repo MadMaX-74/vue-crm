@@ -21,7 +21,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Navbar from '@/components/app/Navbar.vue'
 import Sidebar from '@/components/app/Sidebar.vue'
 import messages from '@/utils/messages'
@@ -42,16 +42,16 @@ export default{
      this.loading = false
   },
   computed: {
-    error( ): any {
+    error() {
       return this.$store.getters.error
     },
-    locale () :string {
+    locale () {
       return this.$store.getters.info.locale
     }
   },
   watch: {
     error(fbError) {
-      this.$error(messages[fbError.code] || 'Что-то пошло не так')
+      this.$error(messages[fbError.code] || 'Something went wrong')
     }
   }
 }

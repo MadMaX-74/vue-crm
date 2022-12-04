@@ -76,12 +76,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
+<script>
 import {required, minValue} from 'vuelidate/lib/validators';
 import {mapGetters} from "vuex";
 
-export default Vue.extend({
+export default{
   name: 'record',
   metaInfo () {
     return {
@@ -101,7 +100,7 @@ export default Vue.extend({
     amount: 1,
     description: ''
   }),
-  async mounted() :Promise<void>{
+  async mounted() {
     this.categories = await this.$store.dispatch('fetchCategory')
     this.loading = false
 
@@ -110,12 +109,14 @@ export default Vue.extend({
     }
 
     setTimeout(() => {
+      // eslint-disable-next-line no-undef
       this.select = M.FormSelect.init(this.$refs.select)
+      // eslint-disable-next-line no-undef
       M.updateTextFields();
     }, 0)
 
   },
-  destroyed() :void{
+  destroyed() {
     if(this.select && this.select.destroy){
       this.select.destroy()
     }
@@ -145,7 +146,7 @@ export default Vue.extend({
             type: this.type,
             date: new Date().toJSON()
           })
-          const bill :number = this.type === 'income' ? this.info.bill + this.amount : this.info.bill - this.amount
+          const bill = this.type === 'income' ? this.info.bill + this.amount : this.info.bill - this.amount
           await this.$store.dispatch('updateInfo', {bill})
           this.$message('Запись успешно создана')
           this.$v.$reset()
@@ -160,6 +161,6 @@ export default Vue.extend({
     }
   }
 
-})
+}
 
 </script>

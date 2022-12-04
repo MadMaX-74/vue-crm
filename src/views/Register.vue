@@ -60,7 +60,7 @@
   </form>
 </template>
 
-<script lang="ts">
+<script>
   import {email, required, minLength} from 'vuelidate/lib/validators';
 
   export default {
@@ -95,8 +95,10 @@
         }
         try {
           await this.$store.dispatch('register', formData)
-          this.$router.push('/')
-        }catch (e){}
+          await this.$router.push('/')
+        }catch (e){
+          console.warn(e.message)
+        }
 
       }
     }

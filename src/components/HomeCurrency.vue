@@ -27,10 +27,9 @@
       </div>
 </template>
 
-<script lang="ts">
-    import Vue from 'vue'
+<script>
 
-    export default Vue.extend({
+    export default{
         props: {
             rates: {
                 type: Object
@@ -42,8 +41,7 @@
         data: () => ({
             currencies: ['RUB', 'USD', 'EUR']
         })
-
-    })
+    }
 </script>
 
 <style scoped>

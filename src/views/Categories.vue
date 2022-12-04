@@ -15,13 +15,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
+<script>
 import CategoryCreate from '@/components/CategoryCreate.vue';
 import CategoryEdit from '@/components/CategoryEdit.vue';
 import Loader from '@/components/app/Loader.vue';
 
-export default Vue.extend({
+export default{
   name: 'categories',
   metaInfo () {
     return {
@@ -49,5 +48,5 @@ export default Vue.extend({
       this.updateCount ++
     }
   }
-})
+}
 </script>

@@ -48,7 +48,6 @@ export default {
       this.currency = await this.$store.dispatch('fetchCurrency')
       this.loading = false
     }
-
-  },
+  }
 }
 </script>

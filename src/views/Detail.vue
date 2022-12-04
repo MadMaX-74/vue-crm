@@ -29,14 +29,13 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
+<script>
 
-export default Vue.extend({
+export default {
   name: 'detail',
   metaInfo () {
     return {
-      title: this.$title('Record')
+      title: this.$title ('Record')
     }
   },
   data: () => ({
@@ -45,8 +44,8 @@ export default Vue.extend({
   }),
   async mounted() {
     const id = this.$route.params.id
-    const record :any = await this.$store.dispatch('fetchRecordById', id)
-    const category :any = await this.$store.dispatch('fetchCategoryById', record.categoryId)
+    const record = await this.$store.dispatch('fetchRecordById', id)
+    const category = await this.$store.dispatch('fetchCategoryById', record.categoryId)
 
     this.record = {
       ...record,
@@ -55,6 +54,6 @@ export default Vue.extend({
 
     this.loading = false
   }
-})
+}
 
 </script>

@@ -56,6 +56,7 @@ export default {
     this.isRuLocale = this.info.locale === 'ru-RU'
     // eslint-disable-next-line no-undef
     setTimeout(() => {
+      // eslint-disable-next-line no-undef
       M.updateTextFields()
     })
 

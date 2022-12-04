@@ -4,17 +4,17 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
 import messages from '@/utils/messages'
 export default {
     computed: {
-        error(): any {
+        error() {
             return this.$store.getters.error
         }
     },
     watch: {
         error(fbError) {
-            this.$error(messages[fbError.code] || 'Что-то пошло не так')
+            this.$error(messages[fbError.code] || 'Something went wrong')
         }
     }
 }

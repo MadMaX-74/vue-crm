@@ -28,12 +28,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
+<script>
 import {mapGetters} from "vuex";
 import currencyFilter from "@/filters/currency.filter";
 
-export default Vue.extend({
+export default{
   name: 'planning',
   metaInfo () {
     return {
@@ -48,18 +47,18 @@ export default Vue.extend({
     const records = await this.$store.dispatch('fetchRecords')
     const categories = await this.$store.dispatch('fetchCategory')
 
-    this.categories = categories.map((item :any) => {
+    this.categories = categories.map((item) => {
       const spend = records
-          .filter((r :any) => r.categoryId === item.id)
-          .filter((r :any) => r.type === 'outcome')
-          .reduce((total :number, record :any) => {
+          .filter((r) => r.categoryId === item.id)
+          .filter((r) => r.type === 'outcome')
+          .reduce((total, record) => {
             return total +=  +record.amount
           }, 0)
-      const percent :number = 100 * spend / item.limit
-      const progressPercent :number = percent > 100 ? 100 : percent
-      const progressColor :string = percent < 60 ? 'green' : percent < 100 ? 'yellow' : 'red'
-      const tooltipValue :number = item.limit - spend
-      const tooltip :any = `${tooltipValue < 0 ? 'Превышение на' : 'Осталось'} ${currencyFilter(Math.abs(tooltipValue))}`
+      const percent = 100 * spend / item.limit
+      const progressPercent = percent > 100 ? 100 : percent
+      const progressColor = percent < 60 ? 'green' : percent < 100 ? 'yellow' : 'red'
+      const tooltipValue = item.limit - spend
+      const tooltip = `${tooltipValue < 0 ? 'Превышение на' : 'Осталось'} ${currencyFilter(Math.abs(tooltipValue))}`
       return {
         ...item,
         progressPercent,
@@ -74,5 +73,5 @@ export default Vue.extend({
   computed: {
     ...mapGetters(['info'])
   }
-})
+}
 </script>

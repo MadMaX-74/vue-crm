@@ -27,11 +27,10 @@
     </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
 import {required, minValue} from 'vuelidate/lib/validators'
 
-export default Vue.extend({
+export default {
     data: () => ({
         title: '',
         limit: 100
@@ -41,6 +40,7 @@ export default Vue.extend({
         limit: {minValue: minValue(100)}
     },
     mounted() {
+      // eslint-disable-next-line no-undef
         M.updateTextFields();
     },
     methods: {
@@ -64,5 +64,5 @@ export default Vue.extend({
             }
         }
     }
-})
+}
 </script>

@@ -44,12 +44,11 @@
   </form>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
 import {email, required, minLength} from 'vuelidate/lib/validators';
 import messages from '@/utils/messages';
 
-  export default  Vue.extend({
+  export default{
     name: 'login',
     metaInfo () {
       return {
@@ -70,7 +69,7 @@ import messages from '@/utils/messages';
       }
     },
     methods: {
-      async submitHandler() :any {
+      async submitHandler() {
         if (this.$v.$invalid){
           this.$v.$touch()
           return
@@ -81,14 +80,14 @@ import messages from '@/utils/messages';
         }
         try{
           await this.$store.dispatch('login', formData)
-          this.$router.push('/')
+          await this.$router.push('/')
         }catch(e){
           console.warn(e.message)
         }
 
       }
     }
-  })
+  }
 </script>
 
 
